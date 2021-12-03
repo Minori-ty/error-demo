@@ -56,7 +56,8 @@ onUpdated(() => {
                 var timer = setInterval(() => {
                     entry.target.setAttribute('src', entry.target.getAttribute('data-src'))
                     entry.target.previousElementSibling.removeAttribute('class')
-                }, 1000)
+                    clearInterval(timer)
+                }, 700)
                 observer.unobserve(entry.target)
             }
         })
