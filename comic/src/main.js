@@ -4,6 +4,8 @@ import App from './App.vue'
 import router from './router'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
+import FectUI from '@fect-ui/vue'
+import '@fect-ui/vue/lib/main.css'
 
 axios.interceptors.request.use(
     (config) => {
@@ -24,4 +26,4 @@ axios.interceptors.response.use(
         return Promise.reject(error)
     }
 )
-createApp(App).use(ElementPlus).use(router).mount('#app')
+createApp(App).use(FectUI).use(ElementPlus).use(router).mount('#app')
