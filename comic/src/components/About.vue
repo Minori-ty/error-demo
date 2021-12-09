@@ -1,16 +1,19 @@
 <template>
-    <div v-for="(item, index) in images.values" :key="index" class="wrap">
-        <div class="skeleton"></div>
-        <img :data-src="item.url" src="#" />
+    <div class="wrap" ref="wrapRef">
+        <div v-for="(item, index) in images.values" :key="index">
+            <div class="skeleton"></div>
+            <img :data-src="item.url" src="#" />
+        </div>
     </div>
 </template>
 
 <script setup>
-import { ref, reactive, onMounted, onUpdated } from 'vue'
+import { ref, reactive, onMounted, onUpdated, watch, nextTick } from 'vue'
 import axios from 'axios'
 
 let images = reactive([])
 let loading = ref(true)
+const wrapRef = ref()
 
 const getimages = async () => {
     const { data } = await axios.get(
@@ -45,28 +48,58 @@ const sort = (arr, image) => {
 // console.log(images.values)
 
 onUpdated(() => {
-    console.log(document.querySelectorAll('img'))
-    let observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                // console.log(entry.target.getAttribute('data-src'))
-                clearInterval(timer)
-
-                console.log(entry.target.previousElementSibling)
-                var timer = setInterval(() => {
-                    entry.target.setAttribute('src', entry.target.getAttribute('data-src'))
-                    entry.target.previousElementSibling.removeAttribute('class')
-                    clearInterval(timer)
-                }, 700)
-                observer.unobserve(entry.target)
-            }
-        })
-    })
-
-    document.querySelectorAll('img').forEach((img) => {
-        observer.observe(img)
-    })
+    //     console.log(document.querySelectorAll('img'))
+    //     let observer = new IntersectionObserver((entries, observer) => {
+    //         entries.forEach((entry) => {
+    //             if (entry.isIntersecting) {
+    //                 // console.log(entry.target.getAttribute('data-src'))
+    //                 clearInterval(timer)
+    //                 console.log(entry.target.previousElementSibling)
+    //                 var timer = setInterval(() => {
+    //                     entry.target.setAttribute('src', entry.target.getAttribute('data-src'))
+    //                     entry.target.previousElementSibling.removeAttribute('class')
+    //                     clearInterval(timer)
+    //                 }, 500)
+    //                 observer.unobserve(entry.target)
+    //             }
+    //         })
+    //     })
+    // document.querySelectorAll('img').forEach((img) => {
+    //     console.log(img)
+    //     // observer.observe(img)
+    // })
 })
+
+watch(
+    () => images.values,
+    (newValue, oldValue) => {
+        let wrapRefDom = wrapRef.value
+
+        nextTick(() => {
+            setTimeout(() => {
+                let observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            clearInterval(timer)
+
+                            // console.log(entry.target.previousElementSibling)
+                            var timer = setInterval(() => {
+                                entry.target.setAttribute('src', entry.target.getAttribute('data-src'))
+                                entry.target.previousElementSibling.removeAttribute('class')
+                                clearInterval(timer)
+                            }, 500)
+                            observer.unobserve(entry.target)
+                        }
+                    })
+                })
+                Array.from(wrapRefDom.children).forEach((div) => {
+                    let img = div.lastElementChild
+                    observer.observe(img)
+                })
+            })
+        })
+    }
+)
 </script>
 
 <style scoped lang="scss">
