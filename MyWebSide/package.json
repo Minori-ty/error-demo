@@ -1,29 +1,30 @@
 {
-    "name": "webpacks",
-    "version": "0.0.0",
-    "scripts": {
-        "dev": "vite",
-        "build": "vite build",
-        "preview": "vite preview",
-        "webpack": "webpack"
-    },
-    "dependencies": {
-        "axios": "^0.24.0",
-        "element-plus": "^1.2.0-beta.5",
-        "vue": "^3.2.23",
-        "vue-router": "^4.0.12"
-    },
-    "devDependencies": {
-        "@vitejs/plugin-vue": "^1.10.2",
-        "@vue/compiler-sfc": "^3.2.24",
-        "css-loader": "^6.5.1",
-        "html-webpack-plugin": "^5.5.0",
-        "less": "^4.1.2",
-        "style-loader": "^3.3.1",
-        "vite": "^2.7.0",
-        "vue-loader": "^16.8.3",
-        "vue-template-compiler": "^2.6.14",
-        "webpack": "^5.65.0",
-        "webpack-cli": "^4.9.1"
-    }
+	"name": "webpacks",
+	"version": "0.0.0",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"preview": "vite preview",
+		"webpack": "webpack",
+		"vite-dev": "vite",
+		"start": "vite",
+		"vite-preview": "vite preview",
+		"vite-build": "vite build"
+	},
+	"dependencies": {
+		"axios": "^0.24.0",
+		"element-plus": "^1.2.0-beta.5",
+		"express": "^4.17.1",
+		"vue": "^3.2.23",
+		"vue-router": "^4.0.12"
+	},
+	"devDependencies": {
+		"@vitejs/plugin-vue": "latest",
+		"@vue/compiler-sfc": "^3.1.5",
+		"html-webpack-plugin": "^5.5.0",
+		"less": "^4.1.2",
+		"vite": "2",
+		"vue-template-compiler": "^2.6.14",
+		"@vitejs/plugin-legacy": "^1.4.4"
+	}
 }
