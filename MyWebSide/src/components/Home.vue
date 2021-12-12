@@ -9,7 +9,7 @@
         </el-col>
     </el-row>
 
-    <h1>代码更新</h1>
+    <h1>轻量版漫画站</h1>
     <el-tabs v-model="activeName">
         <el-tab-pane label="星期一" name="1">
             <div>
@@ -81,7 +81,7 @@
                         path_word: item.path_word,
                     },
                     params: {
-                        path_word: item.path_word,
+                        id: item.path_word,
                     },
                 }"
             >
@@ -93,9 +93,6 @@
 </template>
 
 <script setup>
-import { add, axios as aa } from '../Hooks/index'
-add()
-aa()
 import { ref, reactive } from 'vue'
 import axios from 'axios'
 
