@@ -1,4 +1,7 @@
 <template>
+    <router-link to="/video">
+        <el-button type="success">鬼灭之刃</el-button>
+    </router-link>
     <h1>搜索</h1>
     <el-row>
         <el-col :span="20">
