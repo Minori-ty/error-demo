@@ -18,6 +18,10 @@
             <el-button>{{ item.name }}</el-button>
         </router-link>
     </span>
+    <div class="loading" v-if="flag">
+        <!-- <div class="img"></div> -->
+        <el-button v-for="v in 20" class="button">&emsp;&emsp;&emsp;</el-button>
+    </div>
 </template>
 
 <script setup>
@@ -29,7 +33,7 @@ defineProps({
         type: String,
     },
 })
-
+var flag = ref(true)
 var reg = /(?<=chapter\/)([A-Za-z-]+)(?=(\?)?)/g
 // console.log(str.match(reg))
 var str = window.location.href
@@ -46,6 +50,7 @@ const search = async () => {
         )
         // console.log(data.results.list)
         list.value = data.results.list
+        flag.value = false
     } catch (e) {
         console.log('出错了')
     }
@@ -53,4 +58,33 @@ const search = async () => {
 search()
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.img,
+.button {
+    --loading: #ededed;
+
+    background-color: var(--loading);
+    background: linear-gradient(
+            100deg,
+            rgba(255, 255, 255, 0) 40%,
+            rgba(255, 255, 255, 0.5) 50%,
+            rgba(255, 255, 255, 0) 60%
+        )
+        var(--loading);
+    background-size: 200% 100%;
+    background-position-x: 180%;
+    animation: 1s loading ease-in-out infinite;
+}
+.img {
+    --width: 270px;
+    --height: 360px;
+    // position: absolute;
+    width: var(--width);
+    height: var(--height);
+}
+@keyframes loading {
+    to {
+        background-position-x: -20%;
+    }
+}
+</style>
