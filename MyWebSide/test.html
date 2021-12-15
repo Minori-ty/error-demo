@@ -6,11 +6,41 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
+        <style>
+            .flex {
+                display: flex;
+                justify-items: center;
+                height: 500px;
+                width: 400px;
+                background-color: #eee;
+            }
+            .son {
+                width: 100px;
+                height: 100px;
+                background-color: greenyellow;
+            }
+            .son:nth-child(2) {
+                background-color: skyblue;
+            }
+            .son:nth-child(3) {
+                background-color: hotpink;
+            }
+            .son:nth-child(4) {
+                background-color: gold;
+            }
+            .son:nth-child(5) {
+                background-color: rgb(233, 105, 105);
+            }
+        </style>
     </head>
     <body>
-        <img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2578658472.webp" />
+        <div class="flex">
+            <div class="son"></div>
+            <div class="son"></div>
+            <div class="son"></div>
+            <div class="son"></div>
+            <div class="son"></div>
+        </div>
     </body>
-    <script>
-        document.referrer = 'https://manhua.dmzj.com/'
-    </script>
+    <script></script>
 </html>

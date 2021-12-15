@@ -71,6 +71,11 @@ const date = [
                 url: 'https://mirrorvip2.mangafunc.fun:12001/comic/modujingbingdenuli/cover/1560034c-10a4-11e9-828f-00163e0ca5bd.jpg!w_item',
                 path: 'modujingbingdenuli',
             },
+            {
+                title: '魔都精兵的奴隶',
+                url: 'http://images.dmzj.com/1/1%E5%B9%B4A%E7%8F%AD%E7%9A%84%E6%80%AA%E7%89%A9/%E7%AC%AC43%E8%AF%9D/165%20%E6%8B%B7%E8%B4%9D.jpg',
+                path: 'modujingbingdenuli',
+            },
         ],
     },
     {
