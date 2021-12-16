@@ -20,7 +20,7 @@
     </span>
     <div class="loading" v-if="flag">
         <!-- <div class="img"></div> -->
-        <el-button v-for="v in 20" class="button">&emsp;&emsp;&emsp;</el-button>
+        <el-button v-for="v in 50" class="button">&emsp;&emsp;&emsp;</el-button>
     </div>
 </template>
 

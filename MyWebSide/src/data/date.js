@@ -55,6 +55,16 @@ const date = [
                 url: 'https://mirror.mangafunc.fun/comic/hydxjxrwgb/cover/1ae72308-abaf-11e9-8ef6-024352452ce0.jpg!kb_m_item',
                 path: 'hydxjxrwgb',
             },
+            {
+                title: '我推的孩子',
+                url: 'https://mirrorvip2.mangafunc.fun:12001/comic/wodantuidenvhai/cover/d7107164-7766-11ea-8010-00163e0ca5bd.jpg!m_item',
+                path: 'wodantuidenvhai',
+            },
+            {
+                title: '见面之后5秒开始战斗',
+                url: 'https://mirrorvip2.mangafunc.fun:12001/comic/jianmianzhihouwumiaokaishizhandou/cover.jpg!m_item',
+                path: 'jianmianzhihouwumiaokaishizhandou',
+            },
         ],
     },
     {

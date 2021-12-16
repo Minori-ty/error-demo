@@ -119,6 +119,7 @@ onUpdated(() => {
 
 <style lang="less" scoped>
 .el-row {
+    padding: 0 385px;
     .el-image {
         margin: 0 auto;
     }
