@@ -133,8 +133,8 @@ const search = async () => {
 window.onscroll = function () {
     // console.log(1)
     // search()
-    console.log(Math.floor(getScrollTop() + getWindowHeight()), getScrollHeight())
-    if (Math.floor(getScrollTop() + getWindowHeight()) == getScrollHeight()) {
+    console.log(getScrollTop() + getWindowHeight() == getScrollHeight())
+    if (getScrollTop() + getWindowHeight() == getScrollHeight()) {
         search()
     }
 }

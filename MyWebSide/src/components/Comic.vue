@@ -7,13 +7,13 @@
         <el-button type="primary" v-if="next" @click="nextChapter">下一话</el-button>
     </el-row>
 
-    <h1>{{ title }}</h1>
-    <div class="wrap" ref="wrapRef">
+    <h1 class="fixed">{{ title }}</h1>
+    <!-- <div class="wrap" ref="wrapRef">
         <div v-for="item in list">
             <div class="skeleton"></div>
             <img :data-src="item.url" src="#" />
         </div>
-    </div>
+    </div> -->
     <!-- <div class="wrap" ref="wrapRef">
         <div v-for="item in list">
             <img :src="item.url" />
@@ -118,6 +118,12 @@ onUpdated(() => {
 </script>
 
 <style lang="less" scoped>
+.fixed {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    padding: 10px 0;
+}
 .el-row {
     padding: 0 385px;
     .el-image {
