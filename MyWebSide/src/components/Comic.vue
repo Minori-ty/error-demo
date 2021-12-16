@@ -8,17 +8,17 @@
     </el-row>
 
     <h1>{{ title }}</h1>
-    <!-- <div class="wrap" ref="wrapRef">
+    <div class="wrap" ref="wrapRef">
         <div v-for="item in list">
             <div class="skeleton"></div>
             <img :data-src="item.url" src="#" />
         </div>
-    </div> -->
-    <div class="wrap" ref="wrapRef">
+    </div>
+    <!-- <div class="wrap" ref="wrapRef">
         <div v-for="item in list">
             <img :src="item.url" />
         </div>
-    </div>
+    </div> -->
 
     <el-row style="display: flex; justify-content: space-between">
         <el-button type="primary" v-if="prev" @click="prevChapter">上一话</el-button>
@@ -93,28 +93,28 @@ const nextChapter = async () => {
 }
 
 const wrapRef = ref()
-// onUpdated(() => {
-//     console.log(document.querySelectorAll('img'))
-//     let observer = new IntersectionObserver((entries, observer) => {
-//         entries.forEach((entry) => {
-//             if (entry.isIntersecting) {
-//                 // console.log(entry.target.getAttribute('data-src'))
-//                 clearInterval(timer)
-//                 console.log(entry.target.previousElementSibling)
-//                 var timer = setInterval(() => {
-//                     entry.target.setAttribute('src', entry.target.getAttribute('data-src'))
-//                     entry.target.previousElementSibling.removeAttribute('class')
-//                     clearInterval(timer)
-//                 }, 0)
-//                 observer.unobserve(entry.target)
-//             }
-//         })
-//     })
-//     document.querySelectorAll('img').forEach((img) => {
-//         console.log(img)
-//         observer.observe(img)
-//     })
-// })
+onUpdated(() => {
+    // console.log(document.querySelectorAll('img'))
+    let observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                // console.log(entry.target.getAttribute('data-src'))
+                clearInterval(timer)
+                // console.log(entry.target.previousElementSibling)
+                var timer = setInterval(() => {
+                    entry.target.setAttribute('src', entry.target.getAttribute('data-src'))
+                    entry.target.previousElementSibling.removeAttribute('class')
+                    clearInterval(timer)
+                }, 0)
+                observer.unobserve(entry.target)
+            }
+        })
+    })
+    document.querySelectorAll('img').forEach((img) => {
+        // console.log(img)
+        observer.observe(img)
+    })
+})
 </script>
 
 <style lang="less" scoped>
