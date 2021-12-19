@@ -1,5 +1,5 @@
 <template>
-    <h1>轻量版漫画站</h1>
+    <h1>时间表</h1>
     <el-tabs v-model="activeName">
         <el-tab-pane :label="item.date" :name="item.name" v-for="(item, index) in date" :key="index">
             <span v-if="item.list.length > 0" style="display: flex">

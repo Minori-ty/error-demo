@@ -1,4 +1,6 @@
 <template>
+    <h1>{{ next }}</h1>
+    <el-button @click="fn">fn</el-button>
     <router-view></router-view>
 </template>
 
@@ -21,8 +23,12 @@ const init = async () => {
 init()
 let arr = reactive({
     img: [],
+    next: 1,
 })
-var { img } = toRefs(arr)
+var { img, next } = toRefs(arr)
+const fn = () => {
+    next.value += 2
+}
 </script>
 <style>
 html,

@@ -1,5 +1,6 @@
 <template>
-    <h1>这里是组件</h1>
+    <h1>漫画轻量站</h1>
+    <h2>搜索</h2>
     <el-row>
         <el-col :span="20">
             <el-input v-model="keywords" @keydown.enter="isChange" placeholder="请输入漫画作品名称" />

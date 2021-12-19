@@ -1,6 +1,11 @@
 const express = require('express')
+const compression = require('compression')
+
 const app = express()
+app.use(compression())
+
 app.use(express.static('../dist'))
-app.listen('8888', () => {
-    console.log('http://localhost:8888')
+
+app.listen('8080', () => {
+    console.log('http://127.0.0.1:8080')
 })

@@ -23,14 +23,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, nextTick, onUpdated } from 'vue'
-import axios from 'axios'
-import { useRoute, useRouter } from 'vue-router'
+import { ref, onUpdated } from 'vue'
+import { useRouter } from 'vue-router'
 import { searchImages } from '../request'
 import type { contentsList } from '../types'
 import { useLazyload } from '../Hooks'
 
-const route = useRoute()
 let list = ref<contentsList | []>([])
 let prev = ref('')
 let next = ref('')

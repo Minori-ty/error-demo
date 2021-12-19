@@ -8,12 +8,12 @@
     </el-row>
 
     <h1 class="fixed">{{ title }}</h1>
-    <!-- <div class="wrap" ref="wrapRef">
+    <div class="wrap" ref="wrapRef">
         <div v-for="item in list">
             <div class="skeleton"></div>
             <img :data-src="item.url" src="#" />
         </div>
-    </div> -->
+    </div>
     <!-- <div class="wrap" ref="wrapRef">
         <div v-for="item in list">
             <img :src="item.url" />
