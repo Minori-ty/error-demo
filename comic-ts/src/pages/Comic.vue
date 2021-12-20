@@ -29,37 +29,34 @@ import { searchImages } from '../request'
 import type { contentsList } from '../types'
 import { useLazyload } from '../Hooks'
 
+const reg1 = /(?<=comic\/)([A-Za-z-]+)(?=(\/)?)/g
+const reg2 = /(?<=\/)([A-Za-z0-9-]+)(?=(\/)?)/g
+
 let list = ref<contentsList | []>([])
 let prev = ref('')
 let next = ref('')
 let title = ref('')
-
-var reg1 = /(?<=comic\/)([A-Za-z-]+)(?=(\/)?)/g
-var reg2 = /(?<=\/)([A-Za-z0-9-]+)(?=(\/)?)/g
-// console.log(str.match(reg))
-var str = ref('')
-var comic_id = ref('')
-var uuid = ref('')
-var comic_path_word = ref('')
+let str = ref('')
+let comic_id = ref('')
+let uuid = ref('')
+let comic_path_word = ref('')
 // console.log(comic_id, uuid)
 
 const init = () => {
     str.value = window.location.href
+    //获取漫画的路径
     comic_id.value = str.value.match(reg1)![0]
+    //获取章节的uuid
     uuid.value = str.value.match(reg2)![3]
 }
 
 init()
 let v = ref()
 const search = async () => {
-    const {
-        results: {
-            chapter,
-            comic: { path_word, restrict },
-        },
-    } = await searchImages(comic_id.value, uuid.value)
-
-    console.log(chapter.contents[0].url)
+    const { results } = await searchImages(comic_id.value, uuid.value)
+    const chapter = results.chapter
+    const { path_word, restrict } = results.comic
+    // console.log(chapter.contents[0].url)
     list.value = chapter?.contents
     prev.value = chapter?.prev
     next.value = chapter?.next
@@ -75,6 +72,7 @@ const back = () => {
 }
 
 const changeChapter = async (to: string) => {
+    //等待完全进入下一个页面后再清空数据
     await router.push(`/comic/${comic_id.value}/${to}`)
     list.value = []
     title.value = ''
