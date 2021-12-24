@@ -2,11 +2,12 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import ElementPlus from 'element-plus'
-// import 'element-plus/dist/index.css'
+import 'element-plus/dist/index.css'
 import './assets/css/global.css'
 import axios from 'axios'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
+import { createPinia } from 'pinia'
 
 axios.interceptors.response.use((config) => {
     NProgress.start()
@@ -19,4 +20,4 @@ axios.interceptors.response.use((config) => {
     return config
 })
 
-createApp(App).use(ElementPlus).use(router).mount('#app')
+createApp(App).use(ElementPlus).use(router).use(createPinia()).mount('#app')

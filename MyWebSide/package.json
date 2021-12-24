@@ -17,7 +17,8 @@
 		"express": "^4.17.1",
 		"nprogress": "^0.2.0",
 		"vue": "^3.2.23",
-		"vue-router": "^4.0.12"
+		"vue-router": "^4.0.12",
+		"xgplayer": "^2.31.4"
 	},
 	"devDependencies": {
 		"@vitejs/plugin-legacy": "^1.4.4",

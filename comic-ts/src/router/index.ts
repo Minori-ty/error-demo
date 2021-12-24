@@ -1,6 +1,7 @@
 import { createWebHashHistory, createRouter } from 'vue-router'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
+import Video from '../pages/Video'
 
 const router = createRouter({
     history: createWebHashHistory(),
@@ -23,7 +24,7 @@ const router = createRouter({
         {
             name: 'video',
             path: '/video',
-            component: () => import('../pages/Video.vue'),
+            component: Video,
         },
     ],
 })

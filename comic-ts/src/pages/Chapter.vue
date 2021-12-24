@@ -2,7 +2,7 @@
     <router-link to="/"><el-button type="success">回到搜索页面</el-button></router-link>
 
     <el-row>
-        <el-image :src="$route.query.cover"></el-image>
+        <el-image :src="cover"></el-image>
         <h1>最后更新时间: {{ list[list.length - 1]?.datetime_created }}</h1>
     </el-row>
 
@@ -27,8 +27,9 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { searchChapter } from '../request'
-import { chapterList } from '../types'
+import { searchChapter } from '../request/relacomic'
+import { chapterList } from '../types/relacomic'
+import { useRoute } from 'vue-router'
 defineProps({
     cover: {
         type: String,
@@ -40,7 +41,7 @@ var reg = /(?<=chapter\/)([A-Za-z-]+)(?=(\?)?)/g
 var str = window.location.href
 var path_word = str.match(reg)![0]
 const list = ref<chapterList | []>([])
-
+const cover = useRoute().query.cover
 const search = async () => {
     const data = await searchChapter(path_word)
     list.value = data.results.list

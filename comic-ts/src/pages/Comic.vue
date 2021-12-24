@@ -23,26 +23,39 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onUpdated } from 'vue'
+import { ref, onUpdated, reactive, toRefs } from 'vue'
 import { useRouter } from 'vue-router'
-import { searchImages } from '../request'
-import type { contentsList } from '../types'
+import { searchImages } from '../request/relacomic'
+import type { contentsList } from '../types/relacomic'
 import { useLazyload } from '../Hooks'
 
 const reg1 = /(?<=comic\/)([A-Za-z-]+)(?=(\/)?)/g
 const reg2 = /(?<=\/)([A-Za-z0-9-]+)(?=(\/)?)/g
 
 let list = ref<contentsList | []>([])
-let prev = ref('')
-let next = ref('')
-let title = ref('')
-let str = ref('')
-let comic_id = ref('')
-let uuid = ref('')
-let comic_path_word = ref('')
+// let prev = ref('')
+// let next = ref('')
+// let title = ref('')
+// let str = ref('')
+// let comic_id = ref('')
+// let uuid = ref('')
+// let comic_path_word = ref('')
+
+let comicInfo = reactive({
+    prev: '',
+    next: '',
+    title: '',
+    str: '',
+    comic_id: '',
+    uuid: '',
+    comic_path_word: '',
+})
+
+let { prev, next, title, str, comic_id, uuid, comic_path_word } = toRefs(comicInfo)
+
 // console.log(comic_id, uuid)
 
-const init = () => {
+const getComicInfo = () => {
     str.value = window.location.href
     //获取漫画的路径
     comic_id.value = str.value.match(reg1)![0]
@@ -50,7 +63,7 @@ const init = () => {
     uuid.value = str.value.match(reg2)![3]
 }
 
-init()
+getComicInfo()
 let v = ref()
 const search = async () => {
     const { results } = await searchImages(comic_id.value, uuid.value)
@@ -76,7 +89,7 @@ const changeChapter = async (to: string) => {
     await router.push(`/comic/${comic_id.value}/${to}`)
     list.value = []
     title.value = ''
-    await init()
+    await getComicInfo()
     search()
 }
 const wrapRef = ref()
@@ -136,7 +149,7 @@ img {
         var(--loading);
     background-size: 200% 100%;
     background-position-x: 180%;
-    animation: 1s loading ease-in-out infinite;
+    animation: 1s loading ease-in-out infgetComicInfoe;
 }
 
 @keyframes loading {

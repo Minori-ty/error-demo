@@ -9,12 +9,12 @@ import viteCompression from 'vite-plugin-compression'
 export default defineConfig({
     plugins: [
         vue(),
-        AutoImport({
-            resolvers: [ElementPlusResolver()],
-        }),
-        Components({
-            resolvers: [ElementPlusResolver()],
-        }),
+        // AutoImport({
+        //     resolvers: [ElementPlusResolver()],
+        // }),
+        // Components({
+        //     resolvers: [ElementPlusResolver()],
+        // }),
         viteCompression({
             //生成压缩包gz
             verbose: true,
@@ -25,13 +25,13 @@ export default defineConfig({
         }),
     ],
     build: {
-        // rollupOptions: {
-        //     output: {
-        //         chunkFileNames: 'js/[name]-[hash].js',
-        //         entryFileNames: 'js/[name]-[hash].js',
-        //         assetFileNames: '[ext]/[name]-[hash].[ext]',
-        //     },
-        // },
+        rollupOptions: {
+            output: {
+                chunkFileNames: 'js/[name]-[hash].js',
+                entryFileNames: 'js/[name]-[hash].js',
+                assetFileNames: '[ext]/[name]-[hash].[ext]',
+            },
+        },
         brotliSize: false,
     },
 })

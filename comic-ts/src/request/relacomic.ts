@@ -1,6 +1,6 @@
 import { SEARCH_API, CHAPTER_API, IMAGES_API } from '../api'
 import axios from 'axios'
-import type { resluts, chapterResults, comicResults, imagesResults } from '../types'
+import type { resluts, chapterResults, comicResults, imagesResults } from '../types/relacomic'
 
 //搜索关键词
 export const search = async (count: number, keywords: string) => {
@@ -40,13 +40,3 @@ export const searchImages = async (comic_id: string, uuid: string) => {
 
     return data
 }
-;(async function fn() {
-    const data = await axios
-        .get(
-            'https://www.manga2020.com/api/v3/comic/hydxjxrwgb/chapter/cb321fca-c608-11e8-879b-024352452ce0?timeout=10000'
-        )
-        .then((v) => {
-            return v
-        })
-    console.log(data)
-})()

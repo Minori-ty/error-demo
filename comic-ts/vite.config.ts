@@ -6,17 +6,19 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import externalGlobals from 'rollup-plugin-external-globals'
 import html from 'vite-plugin-html'
 import viteCompression from 'vite-plugin-compression'
+import vueJsx from '@vitejs/plugin-vue-jsx'
 
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [
         vue(),
-        AutoImport({
-            resolvers: [ElementPlusResolver()],
-        }),
-        Components({
-            resolvers: [ElementPlusResolver()],
-        }),
+        vueJsx(),
+        // AutoImport({
+        //     resolvers: [ElementPlusResolver()],
+        // }),
+        // Components({
+        //     resolvers: [ElementPlusResolver()],
+        // }),
         html({
             minify: true,
         }),

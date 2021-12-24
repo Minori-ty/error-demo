@@ -1,6 +1,7 @@
 <template>
     <h1>漫画轻量站</h1>
     <h2>搜索</h2>
+    <el-switch v-model="isR18" />
     <el-row>
         <el-col :span="20">
             <el-input v-model="keywords" @keydown.enter="isChange" placeholder="请输入漫画作品名称" />
@@ -36,15 +37,17 @@
 
 <script setup lang="ts">
 import { ref, toRefs, reactive } from 'vue'
-import { search as searchComic } from '../request'
+import { search as searchComic } from '../request/relacomic'
+import { search as copySearch } from '../request/copymanga'
 import { getScrollTop, getScrollHeight, getWindowHeight } from '../Hooks'
-import type { comicList as list } from '../types'
+import type { comicList as list } from '../types/relacomic'
 import { ElMessage } from 'element-plus'
 import Date from '../components/Date.vue'
 
 let keywords = ref('')
 let count = ref(0)
 let comicList = ref<list | []>([])
+let isR18 = ref(false)
 
 const isChange = () => {
     comicList.value = []
@@ -54,19 +57,28 @@ const isChange = () => {
 
 const search = async () => {
     if (keywords.value == '') return
-    let {
-        results: {
-            comic: { list },
-        },
-    } = await searchComic(count.value, keywords.value)
-    count.value++
-    console.log(list)
+    //使用热辣漫画的搜索
+    let data = await searchComic(count.value, keywords.value)
+    //使用拷贝漫画的搜索
+    let copyData = await copySearch(count.value, keywords.value)
+    let list = ref<list | []>([])
 
-    if (list.length <= 0) {
+    //是否开启R18
+    if (isR18.value) {
+        list.value = data.results.comic.list
+    } else {
+        list.value = copyData.results.list
+    }
+    count.value++
+
+    console.log(copyData.results.list)
+    // console.log(list)
+
+    if (list.value.length <= 0) {
         return ElMessage.error('到底了，没有新内容了')
     }
 
-    comicList.value = [...comicList.value, ...list] as list
+    comicList.value = [...comicList.value, ...list.value] as list
     // console.log(list)
 }
 
