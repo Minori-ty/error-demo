@@ -35,14 +35,17 @@ export default defineConfig({
     ],
     build: {
         brotliSize: false,
-        // rollupOptions: {
-        //     external: ['element-plus', 'vue'],
-        //     plugins: [
-        //         externalGlobals({
-        //             vue: 'Vue',
-        //             'element-plus': 'ElementPlus',
-        //         }),
-        //     ],
-        // },
+        rollupOptions: {
+            external: ['element-plus', 'vue', 'nprogress'],
+            plugins: [
+                externalGlobals({
+                    vue: 'Vue',
+                    'element-plus': 'ElementPlus',
+                    nprogress: 'NProgress',
+                    'element-plus/dist/index.css': 'foo',
+                    'nprogress/nprogress.css': 'foo',
+                }),
+            ],
+        },
     },
 })

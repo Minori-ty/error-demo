@@ -1,13 +1,16 @@
 <template>
     <h1>漫画轻量站</h1>
     <h2>搜索</h2>
-    <el-switch v-model="isR18" />
+
     <el-row>
         <el-col :span="20">
             <el-input v-model="keywords" @keydown.enter="isChange" placeholder="请输入漫画作品名称" />
         </el-col>
-        <el-col :span="4">
+        <el-col :span="2">
             <el-button type="primary" @click="isChange">搜索</el-button>
+        </el-col>
+        <el-col :span="2">
+            <el-switch v-model="isR18" active-color="#13ce66" inactive-color="#ff4949" />
         </el-col>
     </el-row>
 
