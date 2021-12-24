@@ -7,12 +7,27 @@ import externalGlobals from 'rollup-plugin-external-globals'
 import html from 'vite-plugin-html'
 import viteCompression from 'vite-plugin-compression'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+import importToCDN, { autoComplete } from 'vite-plugin-cdn-import'
+import ElementPlus from 'element-plus'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+    base: './',
     plugins: [
         vue(),
         vueJsx(),
+        importToCDN({
+            modules: [
+                autoComplete('vue'), // vue2 使用 autoComplete('vue2')
+                // autoComplete('@vueuse/shared'),
+                // autoComplete('@vueuse/core'),
+                // {
+                //     name: 'element-plus',
+                //     var: 'ElementPlus',
+                //     path: `/lib/index.full.js`,
+                // },
+            ],
+        }),
         // AutoImport({
         //     resolvers: [ElementPlusResolver()],
         // }),
