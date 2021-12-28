@@ -1,4 +1,5 @@
 <template>
+    <!-- <Store /> -->
     <h1>漫画轻量站</h1>
     <h2>搜索</h2>
 
@@ -39,13 +40,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref, toRefs, reactive } from 'vue'
+import { ref } from 'vue'
 import { search as searchComic } from '../request/relacomic'
 import { search as copySearch } from '../request/copymanga'
 import { getScrollTop, getScrollHeight, getWindowHeight } from '../Hooks'
 import type { comicList as list } from '../types/relacomic'
 import { ElMessage } from 'element-plus'
 import Date from '../components/Date.vue'
+import Store from './store'
 
 let keywords = ref('')
 let count = ref(0)
@@ -60,21 +62,22 @@ const isChange = () => {
 
 const search = async () => {
     if (keywords.value == '') return
-    //使用热辣漫画的搜索
-    let data = await searchComic(count.value, keywords.value)
-    //使用拷贝漫画的搜索
-    let copyData = await copySearch(count.value, keywords.value)
-    let list = ref<list | []>([])
+
+    const list = ref<list | []>([])
 
     //是否开启R18
     if (isR18.value) {
+        //使用热辣漫画的搜索
+        const data = await searchComic(count.value, keywords.value)
         list.value = data.results.comic.list
     } else {
+        //使用拷贝漫画的搜索
+        const copyData = await copySearch(count.value, keywords.value)
         list.value = copyData.results.list
     }
     count.value++
 
-    console.log(copyData.results.list)
+    // console.log(copyData.results.list)
     // console.log(list)
 
     if (list.value.length <= 0) {
@@ -89,7 +92,7 @@ window.onscroll = function () {
     var isBottom =
         getScrollTop() + getWindowHeight() == getScrollHeight() ||
         getScrollTop() + getWindowHeight() + 1 == getScrollHeight()
-    console.log(isBottom)
+    // console.log(getScrollTop() + getWindowHeight(), getScrollHeight())
     if (isBottom) {
         search()
     }

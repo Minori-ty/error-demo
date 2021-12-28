@@ -6,11 +6,16 @@
         "moduleResolution": "node",
         "strict": true,
         "jsx": "preserve",
-        "sourceMap": true,
+        // "sourceMap": true,
         "resolveJsonModule": true,
         "esModuleInterop": true,
         "lib": ["esnext", "dom"],
-        "types": ["element-plus/global"]
+        "declaration": true,
+        "declarationDir": "./types",
+        "typeRoots": ["./types"],
+        "types": ["element-plus/global"],
+        "emitDeclarationOnly": true
     },
-    "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
+    "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+    "exclude": ["node_modules/*"]
 }

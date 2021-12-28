@@ -22,20 +22,16 @@ export const search = async (count: number, keywords: string) => {
 //搜索漫画总章节
 export const searchChapter = async (path_word: string) => {
     const { data } = await axios.get<resluts<chapterResults>>(
-        `${CHAPTER_API}/${path_word}/group/default/chapters?limit=0&timeout=10000`,
-        {}
+        `${CHAPTER_API}/${path_word}/group/default/chapters?limit=0&timeout=10000`
     )
-    console.log(data.results)
+    // console.log(data.results)
 
     return data
 }
 
 //搜索漫画图片
 export const searchImages = async (comic_id: string, uuid: string) => {
-    const { data } = await axios.get<resluts<imagesResults>>(
-        `${IMAGES_API}/${comic_id}/chapter/${uuid}?timeout=10000`,
-        {}
-    )
+    const { data } = await axios.get<resluts<imagesResults>>(`${IMAGES_API}/${comic_id}/chapter/${uuid}?timeout=10000`)
     console.log(data.results)
 
     return data

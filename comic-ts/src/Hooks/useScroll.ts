@@ -11,7 +11,7 @@ export function getScrollTop() {
         documentScrollTop = document.documentElement.scrollTop
     }
     scrollTop = bodyScrollTop - documentScrollTop > 0 ? bodyScrollTop : documentScrollTop
-    return Math.floor(scrollTop)
+    return Math.round(scrollTop)
 }
 
 //文档的总高度
@@ -27,7 +27,7 @@ export function getScrollHeight() {
         documentScrollHeight = document.documentElement.scrollHeight
     }
     scrollHeight = bodyScrollHeight - documentScrollHeight > 0 ? bodyScrollHeight : documentScrollHeight
-    return Math.floor(scrollHeight)
+    return Math.round(scrollHeight)
 }
 
 //浏览器视口的高度
@@ -39,5 +39,5 @@ export function getWindowHeight() {
     } else {
         windowHeight = document.body.clientHeight
     }
-    return Math.floor(windowHeight)
+    return Math.round(windowHeight)
 }

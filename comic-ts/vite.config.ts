@@ -36,11 +36,12 @@ export default defineConfig({
     build: {
         brotliSize: false,
         rollupOptions: {
-            external: ['element-plus', 'vue', 'nprogress'],
+            external: ['element-plus', 'vue', 'nprogress', 'pinia'],
             plugins: [
                 externalGlobals({
                     vue: 'Vue',
                     'element-plus': 'ElementPlus',
+                    pinia: 'Pinia',
                     nprogress: 'NProgress',
                     'element-plus/dist/index.css': 'foo',
                     'nprogress/nprogress.css': 'foo',

@@ -79,4 +79,8 @@ search()
         background-position-x: -20%;
     }
 }
+.el-button {
+    width: 172px;
+    margin: 0 10px;
+}
 </style>

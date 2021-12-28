@@ -1,12 +1,9 @@
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 export default defineComponent({
-    name: 'home',
     setup() {
-        const a = 1
         return () => (
             <>
-                <h1>home</h1>
-                <h2 style="color:red">style</h2>
+                <h1>video</h1>
             </>
         )
     },

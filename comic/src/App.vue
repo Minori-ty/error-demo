@@ -1,5 +1,6 @@
 <template>
-    <router-view></router-view>
+    <img src="/img/1.jpg" alt="" />
+    <!-- <router-view></router-view> -->
 </template>
 
 <style>
