@@ -80,7 +80,7 @@ search()
     }
 }
 .el-button {
-    width: 172px;
+    width: 120px;
     margin: 0 10px;
 }
 </style>

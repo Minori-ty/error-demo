@@ -8,11 +8,13 @@ import html from 'vite-plugin-html'
 import viteCompression from 'vite-plugin-compression'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import ElementPlus from 'element-plus'
+import myplugin from './src/plugins'
 
 // https://vitejs.dev/config/
 export default defineConfig({
     base: './',
     plugins: [
+        myplugin(),
         vue(),
         vueJsx(),
         // AutoImport({
