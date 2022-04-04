@@ -1,10 +1,15 @@
-declare const date: {
-    date: string;
-    name: string;
+export type dateType = {
+    date: string
+    name: string
     list: {
-        title: string;
-        url: string;
-        path: string;
-    }[];
-}[];
-export default date;
+        title: string
+        url: string
+        path: string
+    }[]
+}[]
+export type dayType = {
+    title: string
+    url: string
+    path: string
+    day: number
+}[]

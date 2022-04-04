@@ -10,9 +10,9 @@
         <el-col :span="2">
             <el-button type="primary" @click="isChange">搜索</el-button>
         </el-col>
-        <el-col :span="2">
+        <!-- <el-col :span="2">
             <el-switch v-model="isR18" active-color="#13ce66" inactive-color="#ff4949" />
-        </el-col>
+        </el-col> -->
     </el-row>
 
     <Date />
