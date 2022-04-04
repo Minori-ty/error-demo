@@ -9,9 +9,11 @@ export const search = async (count: number, keywords: string) => {
     const { data } = await axios.get<resluts<comicResults>>(COPYMANGA_SEARCH_API, {
         params: {
             offset: count * 30,
-            platform: 2,
-            limit: 30,
+            platform: 1,
+            limit: 20,
             q: keywords,
+            q_type: '',
+            _update: true,
         },
     })
     // console.log(data)
@@ -32,7 +34,13 @@ export const searchChapter = async (path_word: string) => {
 //搜索漫画图片
 export const searchImages = async (comic_id: string, uuid: string) => {
     const { data } = await axios.get<resluts<imagesResults>>(
-        `${COPYMANGA_IMAGES_API}/${comic_id}/chapter/${uuid}?timeout=10000`
+        `${COPYMANGA_IMAGES_API}/${comic_id}/chapter/${uuid}?timeout=10000`,
+        {
+            params: {
+                platform: 1,
+                _update: true,
+            },
+        }
     )
     console.log(data.results)
 

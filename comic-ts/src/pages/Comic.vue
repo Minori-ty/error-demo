@@ -10,8 +10,8 @@
     <h1 class="fixed">{{ title }}</h1>
     <div class="wrap" ref="wrapRef">
         <div v-for="item in list">
-            <div class="skeleton"></div>
-            <img :data-src="item.url" src="#" />
+            <!-- <div class="skeleton"></div> -->
+            <img :data-src="item.url" :src="item.url" />
         </div>
         <h1 v-if="v == 3">这是限制级漫画，请去其他地方观看</h1>
     </div>
@@ -25,8 +25,8 @@
 <script setup lang="ts">
 import { ref, onUpdated, reactive, toRefs } from 'vue'
 import { useRouter } from 'vue-router'
-import { searchImages } from '../request/relacomic'
-import type { contentsList } from '../types/relacomic'
+import { searchImages } from '../request/copymanga'
+import type { contentsList } from '../types/copymanga'
 import { useLazyload } from '../Hooks'
 
 const reg1 = /(?<=comic\/)([A-Za-z-]+)(?=(\/)?)/g
@@ -67,6 +67,8 @@ getComicInfo()
 let v = ref()
 const search = async () => {
     const { results } = await searchImages(comic_id.value, uuid.value)
+    console.log(results.chapter.contents)
+
     const chapter = results.chapter
     const { path_word, restrict } = results.comic
     // console.log(chapter.contents[0].url)
@@ -95,7 +97,7 @@ const changeChapter = async (to: string) => {
 const wrapRef = ref()
 
 onUpdated(() => {
-    useLazyload()
+    // useLazyload()
 })
 </script>
 
