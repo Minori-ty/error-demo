@@ -10,8 +10,8 @@
     <h1 class="fixed">{{ title }}</h1>
     <div class="wrap" ref="wrapRef">
         <div v-for="item in list">
-            <!-- <div class="skeleton"></div> -->
-            <img :data-src="item.url" :src="item.url" />
+            <div class="skeleton"></div>
+            <img :data-src="item.url" src="#" />
         </div>
         <h1 v-if="v == 3">这是限制级漫画，请去其他地方观看</h1>
     </div>
@@ -97,7 +97,7 @@ const changeChapter = async (to: string) => {
 const wrapRef = ref()
 
 onUpdated(() => {
-    // useLazyload()
+    useLazyload()
 })
 </script>
 
@@ -109,7 +109,7 @@ onUpdated(() => {
     padding: 10px 0;
 }
 .el-row {
-    padding: 0 385px;
+    // padding: 0 385px;
     .el-image {
         margin: 0 auto;
     }
@@ -157,6 +157,13 @@ img {
 @keyframes loading {
     to {
         background-position-x: -20%;
+    }
+}
+@media screen and (max-width: 850px) {
+    img,
+    .skeleton {
+        width: 375px !important;
+        height: 667px !important;
     }
 }
 </style>

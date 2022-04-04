@@ -8,16 +8,23 @@ export function useLazyload() {
                 clearInterval(timer)
                 // console.log(entry.target.previousElementSibling)
                 timer = setInterval(() => {
-                    entry.target.setAttribute('src', entry.target.getAttribute('data-src') as string)
-                    entry.target.previousElementSibling!.removeAttribute('class')
+                    // console.log(entry.target)
+                    console.log(entry.target.nextElementSibling)
+
+                    entry.target.nextElementSibling?.setAttribute(
+                        'src',
+                        entry.target.nextElementSibling.getAttribute('data-src') as string
+                    )
+                    console.log(entry.target.nextElementSibling)
+                    entry.target.remove()
                     clearInterval(timer)
-                }, 0)
+                }, 100)
                 observer.unobserve(entry.target)
             }
         })
     })
-    document.querySelectorAll('img').forEach((img) => {
+    document.querySelectorAll('.skeleton').forEach((item) => {
         // console.log(img)
-        observer.observe(img)
+        observer.observe(item)
     })
 }

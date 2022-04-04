@@ -14,7 +14,6 @@ import myplugin from './src/plugins'
 export default defineConfig({
     base: './',
     plugins: [
-        myplugin(),
         vue(),
         vueJsx(),
         // AutoImport({
